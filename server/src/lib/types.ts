@@ -1,8 +1,8 @@
 import { ObjectId, Collection } from 'mongodb';
 
 export enum ListingType {
-  Apartment = 'apartment',
-  House = 'house',
+  Apartment = 'APARTMENT',
+  House = 'HOUSE',
 }
 
 export interface BookingsIndexMonth {
@@ -10,6 +10,10 @@ export interface BookingsIndexMonth {
 }
 export interface BookingsIndexYear {
   [key: string]: BookingsIndexMonth;
+}
+
+export interface BookingsIndex {
+  [key: string]: BookingsIndexYear;
 }
 export interface Listing {
   _id: ObjectId;
@@ -23,7 +27,7 @@ export interface Listing {
   city: string;
   admin: string;
   bookings: ObjectId[];
-  bookingsIndex: BookingsIndexYear;
+  bookingsIndex: BookingsIndex;
   price: number;
   numOfGuests: number;
 }
