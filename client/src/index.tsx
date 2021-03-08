@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import ApolloClient from 'apollo-boost';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { ApolloProvider } from 'react-apollo';
-import { Layout } from 'antd';
+import { Affix, Layout } from 'antd';
 import {
   Home,
   Host,
@@ -12,6 +12,7 @@ import {
   NotFound,
   User,
   Listings,
+  AppHeader,
 } from './sections';
 import { Viewer } from './lib/types';
 import './styles/index.css';
@@ -33,6 +34,9 @@ const App = () => {
   return (
     <Router>
       <Layout id='app'>
+        <Affix offsetTop={0} className='app__affix-header'>
+          <AppHeader />
+        </Affix>
         <Switch>
           <Route exact path='/' component={Home} />
           <Route exact path='/host' component={Host} />
